@@ -1,4 +1,4 @@
-html,
+/* html,
 body {
 	margin: 0;
 	padding: 0;
@@ -51,7 +51,7 @@ body {
 	position: relative;
 	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
 	            0 25px 50px 0 rgba(0, 0, 0, 0.1);
-}
+} */
 
 /* .todoapp input::-webkit-input-placeholder {
 	font-style: italic;
@@ -82,3 +82,10 @@ body {
 	-moz-text-rendering: optimizeLegibility;
 	text-rendering: optimizeLegibility;
 } */
+.app{
+	display: flex;
+	flex-wrap: wrap;
+	width: 600px;
+	margin-left: 35%;
+
+}
