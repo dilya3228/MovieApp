@@ -1,6 +1,6 @@
 import { Input } from "antd";
 import { useState } from "react";
-import { debounce } from "lodash";
+// import { debounce } from "lodash";
 
 const SearchInput = ({allFetchMovies, fetchMovies}) => {
     const [value, setValue] = useState('')
@@ -13,7 +13,7 @@ const SearchInput = ({allFetchMovies, fetchMovies}) => {
         allFetchMovies(text)
     };
 
-    const handleInputDebounce = debounce(handleInput, 500)
+    // const handleInputDebounce = debounce(handleInput, 500)
 
   return (
     <>
