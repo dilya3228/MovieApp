@@ -1,7 +1,7 @@
 const Rating = ({precent}) => {
     return (
         <div>
-            {precent? precent : "NR"}
+            {precent ? precent : "NR"}
         </div> 
     )
 }

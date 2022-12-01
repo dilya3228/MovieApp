@@ -6,6 +6,6 @@ export default axios.create({
     Accept: 'application/json'
   },
   params: {
-    api_key: '1f2f5cbae44b97f8305d1ebba731e7b6'
+    api_key: '1f2f5cbae44b97f8305d1ebba731e7b6',
   }
 })
