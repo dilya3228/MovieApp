@@ -7,7 +7,11 @@ const getPosterURL = (posterpath) => {
 
 const Card = ({poster_path, title, release_date, overview, original_title, vote_average}) => {
 
+
   const today = format(new Date(release_date), "MMMM d, yyyy");
+  // const minText = overview.length < 19 ? overview.slice(0, overview.indexOf(' ', 110)) + '...' : overview.slice(0, overview.indexOf(' ', 200)) + '...';
+  const hiddenText = overview.length > 200 ? overview.slice(0, overview.indexOf(' ', 170)) + '...' : overview
+  const noDescription = overview.length === 0 ? 'No description' : hiddenText;
 
   return (
          <div className="movies__card">
@@ -22,7 +26,7 @@ const Card = ({poster_path, title, release_date, overview, original_title, vote_
                 <span className="movies__jenre">Drama</span>
                 <span className="movies__jenre">Action</span>
             </p>
-            <p className="movies__intro">{overview.length < 19 ? overview.slice(0, overview.indexOf(' ', 110)) + '...' : overview.slice(0, overview.indexOf(' ', 70)) + '...'}</p>
+            <p className="movies__intro">{noDescription}</p>
           </div>
          </div>
   )
