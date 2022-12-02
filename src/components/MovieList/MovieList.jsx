@@ -4,12 +4,15 @@ import MovieCard from '../MovieCard/MovieCard';
 import Loading from "../Loading/Loading";
 import Offline from '../Offline/Offline';
 import SearchInput from "../SearchInput/SearchInput";
+import { Empty } from 'antd';
+import Cat from '../Cat/Cat'
 
 const MovieList = () => {
   const [movies, setMovies] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const [allFilms, setAllFilms] = useState([]);
-  const [keyDownInput, setKeyDown] = useState(false);
+  const [searchFilms, setSearchFilms] = useState(false);
+  const [isEmpty, setIsEmpty] = useState(false)
 
   const allFetchMovies = async (text) => {
     const { data } = await movieRequest.get("/search/movie", {
@@ -17,18 +20,19 @@ const MovieList = () => {
         query: text,
       },
     });
-    setKeyDown(true);
+    setSearchFilms(true);
+    setIsEmpty(true);
     setAllFilms(data.results);
   };
   const fetchMovies = async () => {
     const { data } = await movieRequest.get("/movie/popular");
     setMovies(data.results);
+    setIsEmpty(true)
     setLoading(false);
   };
 
   useEffect(() => {
     fetchMovies();
-    //allFetchMovies();
   }, []);
 
  
@@ -36,25 +40,25 @@ const MovieList = () => {
     <>
       <Offline />
       <SearchInput allFetchMovies={allFetchMovies} />
-
+      
       {isLoading ? (
         <Loading />
       ) : (
         <ul className="movies">
-          {keyDownInput &&
+          {searchFilms &&
           <>
             {allFilms.map((searchMovie, index) => {
               return <MovieCard key={index} {...searchMovie} />;
             })}
           </>
         }
-          {!keyDownInput &&
+          {!searchFilms &&
           <>
             {movies.map((movie, index) => {
               return <MovieCard key={index} {...movie} />;
             })}
           </>
-      }
+      }  {isEmpty && <Cat />}
         </ul>
       )}
     </>

@@ -1,16 +1,12 @@
 .root {
-  max-width: 1010px;
+  width: 1010px;
   margin: 0 auto;
   font-family: 'Inter', 'Arial', sans-serif;
 }
 
 .app {
-  width: 938px;
+  width: 1000px;
   margin: 0 auto;
-}
-
-.ant-input {
-  height: 40px;
 }
 
 .movies {
@@ -32,7 +28,7 @@
 }
 
 .movies__img {
-  width: 183px;
+  width: 181px;
   display: inline-block;
   text-align: center;
   align-self: center;
@@ -127,4 +123,12 @@
 
 .search-input {
   margin-top: 15px;
+  height: 40px;
+  width: 1010px;
+}
+
+.cat-description {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
