@@ -4,30 +4,32 @@ import MovieCard from '../MovieCard/MovieCard';
 import Loading from "../Loading/Loading";
 import Offline from '../Offline/Offline';
 import SearchInput from "../SearchInput/SearchInput";
-import { Empty } from 'antd';
-import Cat from '../Cat/Cat'
+
 
 const MovieList = () => {
   const [movies, setMovies] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const [allFilms, setAllFilms] = useState([]);
   const [searchFilms, setSearchFilms] = useState(false);
-  const [isEmpty, setIsEmpty] = useState(false)
+  
 
   const allFetchMovies = async (text) => {
+    try{
     const { data } = await movieRequest.get("/search/movie", {
       params: {
         query: text,
       },
     });
-    setSearchFilms(true);
-    setIsEmpty(true);
     setAllFilms(data.results);
+    }catch(e){
+      console.log(`Ошибка ${e}`)
+    }
+    setSearchFilms(true);
+    
   };
   const fetchMovies = async () => {
     const { data } = await movieRequest.get("/movie/popular");
     setMovies(data.results);
-    setIsEmpty(true)
     setLoading(false);
   };
 
@@ -40,7 +42,6 @@ const MovieList = () => {
     <>
       <Offline />
       <SearchInput allFetchMovies={allFetchMovies} />
-      
       {isLoading ? (
         <Loading />
       ) : (
@@ -58,7 +59,7 @@ const MovieList = () => {
               return <MovieCard key={index} {...movie} />;
             })}
           </>
-      }  {isEmpty && <Cat />}
+      }
         </ul>
       )}
     </>
