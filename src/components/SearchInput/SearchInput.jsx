@@ -18,6 +18,7 @@ const SearchInput = ({ allFetchMovies }) => {
     return (
       <>
         <Input
+          className="search-input"
           maxLength={50}
           onChange={handleInput}
           value={value}
