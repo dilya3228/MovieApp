@@ -24,18 +24,18 @@ const Card = ({poster_path, title, release_date, overview, original_title, vote_
   const noDescription = overview.length === 0 ? 'No description' : hiddenText;
 
   const bar = {
-    low: "solid 2px #FF0000",
-    medium: "solid 2px #FFD700",
-    high: "solid 2px #00FF00",
-    none: "solid 2px #666666"
+    none: "solid 2px #E90000",
+    low: "solid 2px #E97E00",
+    medium: "solid 2px #E9D100",
+    high: "solid 2px #66E900"
   }
 
   const getColor = (vote_average) => {
 
-    if(vote_average >= 7) return "high";
-    if(vote_average >= 4) return "medium";
-    if(vote_average > 0) return "low";
-    return 'none';
+    if(vote_average > 7) return "high";
+    if(vote_average > 5 & vote_average < 7) return "medium";
+    if(vote_average > 3 & vote_average < 5) return "low";
+    if(vote_average > 0 & vote_average < 3) return "none";
   }
 
   return (

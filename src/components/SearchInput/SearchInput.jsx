@@ -8,10 +8,8 @@ const SearchInput = ({ allFetchMovies }) => {
 
   const handleInput = (e) => {
     const text = e.target.value
-    console.log(e);
       setValue(text);
     if(!text) return
-    // debugger
     allFetchMoviesDebounce(text);
   };
 

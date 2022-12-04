@@ -3,7 +3,9 @@ import MovieList from '../MovieList/MovieList'
 
 const App = () => {
     return (
-        <MovieList />  
+        <>
+            <MovieList />
+        </>
     )
 }
 export default App;
