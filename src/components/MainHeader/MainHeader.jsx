@@ -7,7 +7,7 @@ function MainHeader({ setSelectedPage}) {
     };
   
     return (
-      <div>
+      <div className="menu">
         <Menu
           mode="horizontal"
           className="button-choise"

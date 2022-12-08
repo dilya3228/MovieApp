@@ -36,10 +36,10 @@ function RatedPage() {
                     <ul className="movies">
                                 <>
                                     {ratedList.map((searchMovie, index) => {
-                                        return <MovieCard key={index} {...searchMovie} />;
+                                        return <MovieCard key={index} {...searchMovie} />
                                     })}
                                 </>
-                                <RatedList starrate={starrate} />;
+                                <RatedList starrate={starrate} />
                     </ul>
                             {/*<Page datas={datas} allFetchMovies={allFetchMovies} />*/}
                         </>

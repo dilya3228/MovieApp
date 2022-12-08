@@ -20,6 +20,7 @@ const SearchInput = ({ allFetchMovies }) => {
           maxLength={50}
           onChange={handleInput}
           value={value}
+          placeholder="Type to search..."
         />
       </>
     )

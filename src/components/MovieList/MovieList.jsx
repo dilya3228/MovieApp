@@ -14,20 +14,6 @@ const MovieList = () => {
   const [isEmpty, setIsEmpty] = useState(true);
   const [datas, setDatas] = useState([]);
 
-  // const RequestToken = async () => {
-  //   if (localStorage.getItem("request_token")) return;
-  //   const createRequestToken = await movieRequest.get("/authentication/token/new");
-  //   localStorage.setItem("request_token",`${createRequestToken.data.request_token}`);
-  // };
-
-  // const createSessionId = async () => {
-  //   if (localStorage.getItem("session")) return;
-
-  //   const sessionId = await movieRequest.post("/authentication/session/new", {
-  //     request_token: localStorage.getItem("request_token"),
-  //   });
-  //   localStorage.setItem("session", `${sessionId.data.session_id}`);
-  // };
 
   const guestToken = async () => {
     if (localStorage.getItem("guest")) return;
@@ -46,7 +32,6 @@ const MovieList = () => {
       });
       let a = JSON.stringify(data.results)
       localStorage.setItem('zzz', a)
-      console.log(a);
  
       if (data.results.length === 0) return setIsEmpty(false);
       else {
@@ -60,17 +45,10 @@ const MovieList = () => {
     }
   };
 
-  // const createAllTokens = async () => {
-  //   // await RequestToken();
-  //   await guestToken();
-  //   // await createSessionId();
-  // };
 
   useEffect(() => {
-    // createSessionId()
     guestToken()
     allFetchMovies();
-    // createAllTokens();
   }, []);
 
   return (
