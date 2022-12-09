@@ -64,7 +64,6 @@ const Card = ({poster_path, title, release_date, overview, original_title, vote_
           ) : (
             <img
               src={getPosterURL(poster_path)}
-              // style={{ height: "281px" }}
               alt={title}
               className="movies__img"
             />

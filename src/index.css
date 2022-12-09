@@ -29,7 +29,6 @@
   position: relative;
 }
 
-
 .movies__img {
   width: 183px;
   display: inline-block;
@@ -85,12 +84,10 @@
   padding-top: 10px;
   font-size: 12px;
   line-height: 22px;
-  /* height: calc(100% - 170px); */
   margin: 0;
   flex-grow: 1;
 }
 .movies__rate {
-  /* display: inline-block; */
   margin: 0;
   width: 30px;
   height: 30px;
@@ -201,7 +198,6 @@
     gap: 20px;
     padding-top: 10px;
   }
-  
   .movies__card {
     width: 100%;
     box-sizing: border-box;
@@ -209,11 +205,9 @@
     height: 245px;
     display: block;
   }
-  
   .movies__name {
     font-size: 16px;
   }
-  
   .movies__img {
     width: 60px;
     height: 91px;
@@ -235,15 +229,6 @@
   .menu {
     width: 150px;
     margin: 0 auto;
-  }
-  .movies__date {
-    
-  }
-  .movies__jenres {
-    
-  }
-  .movies__jenre {
-    
   }
   .movies__intro {
     padding-top: 22px;
@@ -268,25 +253,5 @@
   
   .stars {
     right: 30px;
-  }
-  
-  .button-choise { 
-    
-  }
-  
-  .paginate {
-    
-  }
-  
-  .stars {
-    
-  }
-  
-  .search-input {
-    
-  }
-  
-  .movies__jenre {
-    
   }
 }
