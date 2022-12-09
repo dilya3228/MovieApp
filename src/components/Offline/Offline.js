@@ -19,7 +19,7 @@ const Offline = () => {
   }
   return (
     <Alert
-      message="Заплати за инет"
+      message="No internet connection"
       type="warning"
     />
   );

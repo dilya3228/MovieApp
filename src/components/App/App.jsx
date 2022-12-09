@@ -1,7 +1,7 @@
 import '../../style';
 import MovieList from "../MovieList/MovieList";
 import MainHeader from "../MainHeader/MainHeader";
-import RatedPage from "../Page/RatedPage"
+import RatedPage from "../RatedPage/RatedPage"
 import { useState, useEffect } from 'react';
 import  Context  from '../../Context/Context';
 import movieRequest from '../../sevices/movie-request';

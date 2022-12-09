@@ -1,0 +1,9 @@
+.paginate {
+    text-align: center;
+    margin: 15px 0px  15px 0px;
+}
+
+div.footer ul li.ant-pagination-item-active {
+    background-color: rgba(104, 126, 250, 0.5);
+    color: #ffffff;
+}

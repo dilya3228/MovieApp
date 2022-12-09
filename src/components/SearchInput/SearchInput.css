@@ -1,0 +1,16 @@
+.search-input {
+    margin-top: 15px;
+    height: 40px;
+
+}
+
+.ant-input {
+    height: 40px;
+}
+
+@media screen and (max-width: 720px) {
+    .ant-input {
+      height: 40px;
+      width: 388px;
+    }
+}
