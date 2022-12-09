@@ -23,7 +23,7 @@ const Card = ({poster_path, title, release_date, overview, original_title, vote_
   
   const hiddenText = overview.length > 19 ? overview.slice(0, overview.indexOf(' ', 100)) + '...' : overview
   const noDescription = overview.length === 0 ? 'No description' : hiddenText;
-  const hiddenTitle = original_title.length > 25 ? original_title.slice(0, original_title.indexOf(' ', 25)) + '...' : original_title;
+  // const hiddenTitle = original_title.length > 25 ? original_title.slice(0, original_title.indexOf(' ', 25)) + '...' : original_title;
 
   const bar = {
     none: "solid 3px #E90000",
@@ -69,7 +69,7 @@ const Card = ({poster_path, title, release_date, overview, original_title, vote_
             />
           )}
           <div className="movies__description">
-            <h5 className="movies__name">{hiddenTitle}</h5>
+            <h5 className="movies__name">{original_title}</h5>
             <div
               className="movies__rate"
               style={{ border: bar[getColor(vote_average)] }}
