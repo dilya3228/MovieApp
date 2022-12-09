@@ -1,8 +1,6 @@
-import { Spin } from "antd";
+import { Spin } from 'antd'
 
 const Loading = () => {
-  return(
-    <Spin size="large" className="spin" />
-  )
+  return <Spin size="large" className="spin" />
 }
-export default Loading;
+export default Loading

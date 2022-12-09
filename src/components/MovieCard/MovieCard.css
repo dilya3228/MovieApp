@@ -74,23 +74,6 @@
     flex-grow: 1;
 }
 
-/* .movies__jenre {
-    display: inline-block;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 1.7;
-    width: 44px;
-    text-align: center;
-    height: 18px;
-    vertical-align: middle;
-    margin-right: 8px;
-    color: rgba(0, 0, 0, 0.65);
-    background: #FAFAFA;
-    border: 1px solid #D9D9D9;
-    border-radius: 2px;
-} */
-
 .movies__jenre {
     display: inline-block;
     font-style: bold;

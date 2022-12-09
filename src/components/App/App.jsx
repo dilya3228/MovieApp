@@ -1,13 +1,13 @@
-import '../../style';
-import MovieList from "../MovieList/MovieList";
-import MainHeader from "../MainHeader/MainHeader";
-import RatedPage from "../RatedPage/RatedPage"
-import { useState, useEffect } from 'react';
-import  Context  from '../../Context/Context';
-import movieRequest from '../../sevices/movie-request';
+import '../../style'
+import MovieList from '../MovieList/MovieList'
+import MainHeader from '../MainHeader/MainHeader'
+import RatedPage from '../RatedPage/RatedPage'
+import { useState, useEffect } from 'react'
+import Context from '../../Context/Context'
+import movieRequest from '../../sevices/movie-request'
 
 const App = () => {
-  const [selectedPage, setSelectedPage] = useState("search");
+  const [selectedPage, setSelectedPage] = useState('search')
   const [ganreState, setGanreState] = useState([])
 
   const getGangeId = async () => {
@@ -15,20 +15,20 @@ const App = () => {
     setGanreState(data.genres)
   }
 
-  useEffect(() =>{
+  useEffect(() => {
     getGangeId()
-} , [selectedPage])
+  }, [selectedPage])
 
-    return (
-      <>
+  return (
+    <>
       <Context.Provider value={ganreState}>
         <section className="app">
-            <MainHeader setSelectedPage={setSelectedPage} />
-            {selectedPage === 'search' &&  <MovieList />}
-            {selectedPage === 'rated' &&  <RatedPage />}
-          </section>
-        </Context.Provider>
-      </>
-    )
+          <MainHeader setSelectedPage={setSelectedPage} />
+          {selectedPage === 'search' && <MovieList />}
+          {selectedPage === 'rated' && <RatedPage />}
+        </section>
+      </Context.Provider>
+    </>
+  )
 }
-export default App;
+export default App
