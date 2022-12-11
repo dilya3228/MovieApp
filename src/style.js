@@ -1,7 +1,7 @@
 import './../src/vendor/normalize.css'
 import './../src/vendor/fonts.css'
 import './components/App/App.css'
-import './components/Cat/Cat.css'
+import './components/FilmsNotFound/FilmsNotFound.css'
 import './components/Loading/Loading.css'
 import './components/MainHeader/MainHeader.css'
 import './components/MovieCard/MovieCard.css'

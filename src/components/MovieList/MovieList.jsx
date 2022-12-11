@@ -4,7 +4,7 @@ import MovieCard from '../MovieCard/MovieCard'
 import Loading from '../Loading/Loading'
 import Offline from '../Offline/Offline'
 import SearchInput from '../SearchInput/SearchInput'
-import Cat from '../Cat/Cat'
+import FilmsNotFound from '../FilmsNotFound/FilmsNotFound'
 import Page from '../Page/Page'
 
 const MovieList = () => {
@@ -66,7 +66,7 @@ const MovieList = () => {
               <Page datas={datas} allFetchMovies={allFetchMovies} />
             </>
           )}
-          {!isEmpty && <Cat />}
+          {!isEmpty && <FilmsNotFound />}
         </>
       )}
     </>
