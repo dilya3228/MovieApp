@@ -19,7 +19,7 @@ const MovieList = () => {
     localStorage.setItem('guest', `${guestKey.data.guest_session_id}`)
   }
 
-  const allFetchMovies = async (text = 'return') => {
+  const getAllMovies = async (text = 'return') => {
     try {
       const { data } = await movieRequest.get('/search/movie', {
         params: {
@@ -43,13 +43,13 @@ const MovieList = () => {
 
   useEffect(() => {
     guestToken()
-    allFetchMovies()
+    getAllMovies()
   }, [])
 
   return (
     <>
       <Offline />
-      <SearchInput allFetchMovies={allFetchMovies} />
+      <SearchInput getAllMovies={getAllMovies} />
       {isLoading ? (
         <Loading />
       ) : (
@@ -63,7 +63,7 @@ const MovieList = () => {
                   })}
                 </>
               </ul>
-              <Page datas={datas} allFetchMovies={allFetchMovies} />
+              <Page datas={datas} getAllMovies={getAllMovies} />
             </>
           )}
           {!isEmpty && <FilmsNotFound />}

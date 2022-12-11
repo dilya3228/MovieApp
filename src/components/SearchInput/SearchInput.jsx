@@ -2,9 +2,9 @@ import { Input } from 'antd'
 import { useState, useCallback } from 'react'
 import { debounce } from 'lodash'
 
-const SearchInput = ({ allFetchMovies }) => {
+const SearchInput = ({ getAllMovies }) => {
   const [value, setValue] = useState('')
-  const allFetchMoviesDebounce = useCallback(debounce(allFetchMovies, 1000), [])
+  const allFetchMoviesDebounce = useCallback(debounce(getAllMovies, 1000), [])
 
   const handleInput = (e) => {
     const text = e.target.value
