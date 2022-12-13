@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
-import movieRequest from '../../sevices/movie-request'
 import MovieCard from '../MovieCard/MovieCard'
 import Loading from '../Loading/Loading'
 import Offline from '../Offline/Offline'
 import SearchInput from '../SearchInput/SearchInput'
 import FilmsNotFound from '../FilmsNotFound/FilmsNotFound'
 import Page from '../Page/Page'
+import { guestToken } from '../../sevices/movie-rate'
+import MovieRequest from '../../sevices/movie-request'
 
 const MovieList = () => {
   const [allFilms, setAllFilms] = useState([])
@@ -13,28 +14,19 @@ const MovieList = () => {
   const [isEmpty, setIsEmpty] = useState(true)
   const [datas, setDatas] = useState([])
 
-  const guestToken = async () => {
-    if (localStorage.getItem('guest')) return
-    const guestKey = await movieRequest.get('/authentication/guest_session/new')
-    localStorage.setItem('guest', `${guestKey.data.guest_session_id}`)
-  }
-
   const getAllMovies = async (text = 'return') => {
     try {
-      const { data } = await movieRequest.get('/search/movie', {
+      const { data } = await MovieRequest.get('/search/movie', {
         params: {
           query: text,
         },
       })
-      let a = JSON.stringify(data.results)
-      localStorage.setItem('zzz', a)
-
       if (data.results.length === 0) return setIsEmpty(false)
       else {
-        setIsEmpty(true)
-        setLoading(false)
         setAllFilms(data.results)
         setDatas(data)
+        setIsEmpty(true)
+        setLoading(false)
       }
     } catch (e) {
       console.log(`Ошибка ${e}`)

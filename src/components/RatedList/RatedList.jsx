@@ -1,11 +1,10 @@
 import { Rate } from 'antd'
-import movieRateStars from '../../sevices/movie-rate-stars'
+import { movieRateStars } from '../../sevices/movie-rate'
 
 const RatedList = ({ id }) => {
   const handleClickStar = (star) => {
     movieRateStars(star, id)
   }
-
   const localGetRating = localStorage.getItem('str')
   const ratedCards = JSON.parse(localGetRating)
 

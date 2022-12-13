@@ -12,12 +12,12 @@ const ListPagination = ({ datas, getAllMovies }) => {
   return (
     <div className="footer paginate">
       <Pagination
-        showSizeChanger={false}
-        defaultPageSize={1}
-        defaultCurrent={page}
         total={total_results}
         onChange={handlePaginate}
-        current={current}
+        showSizeChanger={false}
+        defaultCurrent={1}
+        defaultPageSize={20}
+        // current={current}
       />
     </div>
   )
