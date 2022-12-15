@@ -1,6 +1,6 @@
 import movieRequest from './movie-request'
 
-const movieRateStars = async (starFull, id) => {
+const postMovieRateStars = async (starFull, id) => {
   const data = await movieRequest
     .post(
       `/movie/${id}/rating`,
@@ -15,4 +15,4 @@ const movieRateStars = async (starFull, id) => {
     )
     .catch((e) => console.log(e.name))
 }
-export default movieRateStars
+export default postMovieRateStars

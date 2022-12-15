@@ -13,7 +13,7 @@ const MovieList = () => {
   const [allFilms, setAllFilms] = useState([])
   const [isLoading, setLoading] = useState(true)
   const [isEmpty, setIsEmpty] = useState(true)
-  const [seacrhValue, setSeacrhValue] = useState()
+  const [seacrhMuvie, setseacrhMuvie] = useState()
   const [page, setPage] = useState(1)
   const [totalPage, setTotalPage] = useState(0)
 
@@ -39,21 +39,21 @@ const MovieList = () => {
   )
 
   const searchFilms = (value, page) => {
-    setSeacrhValue(value)
+    setseacrhMuvie(value)
     setPage(page)
     allFetchMoviesDebounce(value, page)
   }
 
   useEffect(() => {
     guestToken()
-    searchFilms(seacrhValue)
+    searchFilms(seacrhMuvie)
   }, [])
 
   return (
     <>
       <Offline />
       <SearchInput
-        value={seacrhValue}
+        value={seacrhMuvie}
         onChange={(e) => {
           searchFilms(e.target.value)
         }}
@@ -75,7 +75,7 @@ const MovieList = () => {
                 total_pages={totalPage}
                 current={page}
                 onChange={(newPage) => {
-                  searchFilms(seacrhValue, newPage)
+                  searchFilms(seacrhMuvie, newPage)
                 }}
               />
             </>

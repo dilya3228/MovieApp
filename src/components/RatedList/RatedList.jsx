@@ -1,5 +1,5 @@
 import { Rate } from 'antd'
-import movieRateStars from '../../sevices/movieRate'
+import movieRateStars from '../../sevices/postMovieRateStars'
 
 const RatedList = ({ id }) => {
   const handleClickStar = (star) => {
