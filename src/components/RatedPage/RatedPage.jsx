@@ -9,9 +9,9 @@ function RatedPage() {
   const [isLoading, setLoading] = useState(true)
 
   let localgest = localStorage.getItem('guest')
-  const res = movieRequest.get(`/guest_session/${localgest}/rated/movies`)
+  const guestSession = movieRequest.get(`/guest_session/${localgest}/rated/movies`)
   const result = () => {
-    res.then((el) => {
+    guestSession.then((el) => {
       const str = JSON.stringify(el.data.results)
       localStorage.setItem('str', str)
       setRatedList(el.data.results)
