@@ -1,5 +1,5 @@
 import { Rate } from 'antd'
-import { movieRateStars } from '../../sevices/movie-rate'
+import movieRateStars from '../../sevices/movieRate'
 
 const RatedList = ({ id }) => {
   const handleClickStar = (star) => {
@@ -16,6 +16,6 @@ const RatedList = ({ id }) => {
   }
   const aver = res.length > 0 ? res[0].rating : 0
 
-  return <Rate count={10} defaultValue={aver} className="stars" onChange={handleClickStar} />
+  return <Rate key={id} defaultValue={aver} count={10} className="stars" onChange={handleClickStar} />
 }
 export default RatedList

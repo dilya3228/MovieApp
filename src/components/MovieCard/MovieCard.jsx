@@ -3,7 +3,7 @@ import Rating from '../Rating/Rating'
 import { format } from 'date-fns'
 import Loading from '../Loading/Loading'
 import RatedList from '../RatedList/RatedList'
-import Context from '../../Context/Context'
+import GetRightGenres from '../Genges/genres'
 
 const Card = ({ poster_path, title, release_date, overview, original_title, vote_average, id, genre_ids }) => {
   const getPosterURL = () => {
@@ -11,7 +11,6 @@ const Card = ({ poster_path, title, release_date, overview, original_title, vote
     return `https://www.themoviedb.org/t/p/w220_and_h330_face/${poster_path}`
   }
   const [loading, setLoading] = useState(true)
-
   useEffect(() => {
     setLoading(false)
   }, [])
@@ -23,7 +22,6 @@ const Card = ({ poster_path, title, release_date, overview, original_title, vote
 
   const hiddenText = overview.length > 19 ? overview.slice(0, overview.indexOf(' ', 100)) + '...' : overview
   const noDescription = overview.length === 0 ? 'No description' : hiddenText
-  // const hiddenTitle = original_title.length > 25 ? original_title.slice(0, original_title.indexOf(' ', 25)) + '...' : original_title;
 
   const bar = {
     none: 'solid 3px #E90000',
@@ -39,27 +37,6 @@ const Card = ({ poster_path, title, release_date, overview, original_title, vote
     if (vote_average >= 0 && vote_average < 3) return 'none'
   }
 
-  const getRightGenres = (
-    <Context.Consumer>
-      {(value) => {
-        if (value) {
-          let genArr = genre_ids.map((item) => {
-            let getItem = value.find((el) => el.id === item)
-            return getItem.name
-          })
-          let genresPrepared = genArr.slice(0, 3).map((name, id) => {
-            return (
-              <span key={id} className="movies__jenre">
-                {name}
-              </span>
-            )
-          })
-          return genresPrepared
-        }
-      }}
-    </Context.Consumer>
-  )
-
   return (
     <div className="movies__card">
       {loading ? <Loading /> : <img src={getPosterURL(poster_path)} alt={title} className="movies__img" />}
@@ -69,7 +46,7 @@ const Card = ({ poster_path, title, release_date, overview, original_title, vote
           <Rating precent={vote_average} />
         </div>
         <p className="movies__date">{formatData(release_date)}</p>
-        <p className="movies__jenres">{getRightGenres}</p>
+        <GetRightGenres genre_ids={genre_ids} />
         <p className="movies__intro">{noDescription}</p>
         <RatedList id={id} />
       </div>
