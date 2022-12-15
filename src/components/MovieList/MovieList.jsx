@@ -13,17 +13,22 @@ const MovieList = () => {
   const [allFilms, setAllFilms] = useState([])
   const [isLoading, setLoading] = useState(true)
   const [isEmpty, setIsEmpty] = useState(true)
-  const [seacrhValue, setSeacrhValue] = useState('return')
+  const [seacrhValue, setSeacrhValue] = useState()
   const [page, setPage] = useState(1)
   const [totalPage, setTotalPage] = useState(0)
 
   const allFetchMoviesDebounce = useCallback(
-    debounce(async (value, page) => {
+    debounce(async (value = 'return', page) => {
+      if (value.trim() === '') return
       setLoading(true)
       try {
         const data = await getAllMovies(value, page)
-        setAllFilms(data.results)
-        setTotalPage(data.total_pages)
+        if (data.results.length === 0) setIsEmpty(true)
+        else {
+          setAllFilms(data.results)
+          setTotalPage(data.total_pages)
+          setIsEmpty(false)
+        }
       } catch (e) {
         console.log(e)
       } finally {
@@ -33,7 +38,7 @@ const MovieList = () => {
     []
   )
 
-  const search = (value, page) => {
+  const searchFilms = (value, page) => {
     setSeacrhValue(value)
     setPage(page)
     allFetchMoviesDebounce(value, page)
@@ -41,7 +46,7 @@ const MovieList = () => {
 
   useEffect(() => {
     guestToken()
-    search(seacrhValue)
+    searchFilms(seacrhValue)
   }, [])
 
   return (
@@ -50,14 +55,14 @@ const MovieList = () => {
       <SearchInput
         value={seacrhValue}
         onChange={(e) => {
-          search(e.target.value)
+          searchFilms(e.target.value)
         }}
       />
       {isLoading ? (
         <Loading />
       ) : (
         <>
-          {isEmpty && (
+          {!isEmpty && (
             <>
               <ul className="movies">
                 <>
@@ -70,12 +75,12 @@ const MovieList = () => {
                 total_pages={totalPage}
                 current={page}
                 onChange={(newPage) => {
-                  search(seacrhValue, newPage)
+                  searchFilms(seacrhValue, newPage)
                 }}
               />
             </>
           )}
-          {!isEmpty && <FilmsNotFound />}
+          {isEmpty && <FilmsNotFound />}
         </>
       )}
     </>
